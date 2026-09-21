@@ -42,30 +42,24 @@ class UserController:
 
         for user in self.users:
             if user.u_id == u_id:
-                return [user.u_name,user.age]
+                return user
 
         return "User not found"
 
-    def update_profile(self,u_id,u_name,age,gender,u_address,password,phonenumber,email):
+    def update_profile(self,u_id,u_name=None,u_address=None,phonenumber=None,email=None):
 
         for user in self.users:
             if user.u_id==u_id:
                 if u_name is not None:
                     user.u_name=u_name
-                if age is not None:
-                    user.age=age
-                if gender is not None:
-                    user.gender=gender
                 if u_address is not None:
                     user.u_address=u_address
-                if password is not None:
-                    user.password=password
                 if phonenumber is not None:
                     user.phonenumber=phonenumber
                 if email is not None:
                     user.email=email
                 return user
-            return "User not found"
+            return None
 
     
             

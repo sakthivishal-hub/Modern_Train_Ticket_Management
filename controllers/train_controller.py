@@ -13,13 +13,22 @@ class TrainController:
 
         return train    
 
-    def view_train(self,source,destination):
-
+    def search_train(self,source,destination):
+        results=[]
         for train in self.trains:
             if train.source==source and train.destination==destination:
-                return "Train is Available: "+str(train.t_id)+" "+str(train.t_name)
+                results.append(train)
+        return results
+    
 
-        return "Train Not Available"
+    def train_details(self,t_id):
+
+        for train in self.trains:
+
+            if train.t_id==t_id:
+                return train
+
+        return None
 
     
     def train_details(self,t_id):
@@ -27,9 +36,10 @@ class TrainController:
         for train in self.trains:
 
             if train.t_id==t_id:
-                return [train.t_id,train.t_name,train.source,train.destination,train.arr_time,train.dep_time,train.t_type,train.available_seats]
+                return train
 
-        return "Train ID is Invalid"
+        return None
+    
 
     def update_train(self,t_id,t_name,source,destination,arr_time,dep_time,t_type,available_seats):
 
@@ -51,9 +61,8 @@ class TrainController:
                 if available_seats is not None:
                     train.available_seats=available_seats
 
-                return [train.t_id,train.t_name,train.source,train.destination,train.arr_time,train.dep_time,train.t_type,train.available_seats]
-
-        return "Train ID is Invalid"
+                return train
+        return None
 
     def remove_train(self, t_id):
 
