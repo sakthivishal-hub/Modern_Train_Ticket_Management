@@ -21,14 +21,6 @@ class TrainController:
         return results
     
 
-    def train_details(self,t_id):
-
-        for train in self.trains:
-
-            if train.t_id==t_id:
-                return train
-
-        return None
 
     
     def train_details(self,t_id):
